@@ -33,7 +33,7 @@ module TwitterOAuth
     
     # Show tweet timeline for members of the specified list.
     def list_statuses(user, list)
-      get("/#{user}/lists/#{list}/statuses.json")
+      get("/lists/statuses.json?slug=#{list}&owner_screen_name=#{user}")
     end
     
     # List the lists the specified user has been added to.
