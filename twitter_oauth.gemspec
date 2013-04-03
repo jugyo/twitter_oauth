@@ -4,11 +4,11 @@ $:.push File.expand_path("../lib", __FILE__)
 require "twitter_oauth/version"
 
 Gem::Specification.new do |s|
-  s.name        = "twitter_oauth"
+  s.name        = "jugyo-twitter_oauth"
   s.version     = TwitterOAuth::VERSION
-  s.authors     = ["Richard Taylor"]
-  s.email       = ["moomerman@gmail.com"]
-  s.homepage    = "http://github.com/moomerman/twitter_oauth"
+  s.authors     = ["Richard Taylor", "jugyo"]
+  s.email       = ["moomerman@gmail.com", "jugyo.org@gmail.com"]
+  s.homepage    = "http://github.com/jugyo/twitter_oauth"
   s.summary     = %q{twitter_oauth is a Ruby client for the Twitter API using OAuth.}
   s.description = %q{twitter_oauth is a Ruby client for the Twitter API using OAuth.}
 
