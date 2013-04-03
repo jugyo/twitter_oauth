@@ -4,11 +4,9 @@ module TwitterOAuth
   class Client
 
     def search(q, options={})
-      options[:page] ||= 1
-      options[:rpp] ||= 20
-      options[:q] = URI.escape(q)
+      options[:q] = ERB::Util.url_encode(q)
       args = options.map{|k,v| "#{k}=#{v}"}.join('&')
-      search_get("/search.json?#{args}")
+      get("/search/tweets.json?#{args}")
     end
 
     # Returns the current top 10 trending topics on Twitter.
