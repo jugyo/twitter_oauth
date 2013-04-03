@@ -1,5 +1,6 @@
 require 'rake/testtask'
 require 'shoulda/tasks'
+require "bundler/gem_tasks"
 
 
 task :default => ["test:units"]
