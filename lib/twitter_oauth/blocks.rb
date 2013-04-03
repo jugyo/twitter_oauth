@@ -4,14 +4,14 @@ module TwitterOAuth
     # Blocks the user specified in the ID parameter as the authenticating user. 
     # Destroys a friendship to the blocked user if it exists. 
     # Returns the blocked user in the requested format when successful.
-    def block(id)
-      post("/blocks/create/#{id}.json")
+    def block(screen_name)
+      post("/blocks/create.json", screen_name: screen_name)
     end
     
     # Un-blocks the user specified in the ID parameter for the authenticating user.  
     # Returns the un-blocked user in the requested format when successful.
-    def unblock(id)
-      post("/blocks/destroy/#{id}.json")
+    def unblock(screen_name)
+      post("/blocks/destroy.json", screen_name: screen_name)
     end
     
     # Returns if the authenticating user is blocking a target user.
