@@ -26,6 +26,7 @@ module TwitterOAuth
       @secret = options[:secret]
       @proxy = options[:proxy]
       @debug = options[:debug]
+      @secure = options[:secure]
       @api_version = options[:api_version] || '1'
       @api_host = options[:api_host] || 'api.twitter.com'
       @search_host = options[:search_host] || 'search.twitter.com'
@@ -62,7 +63,7 @@ module TwitterOAuth
     private
 
       def consumer(options={})
-        options[:secure] ||= false
+        options[:secure] ||= @secure
         protocol = options[:secure] ? 'https' : 'http'
         @consumer ||= OAuth::Consumer.new(
           @consumer_key,
