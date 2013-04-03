@@ -14,6 +14,7 @@ require 'twitter_oauth/lists'
 require 'twitter_oauth/saved_searches'
 require 'twitter_oauth/spam'
 require 'twitter_oauth/geo'
+require 'twitter_oauth/version'
 
 module TwitterOAuth
   class Client
