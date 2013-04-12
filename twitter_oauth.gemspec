@@ -4,7 +4,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "twitter_oauth/version"
 
 Gem::Specification.new do |s|
-  s.name        = "jugyo-twitter_oauth"
+  s.name        = "twitter_oauth"
   s.version     = TwitterOAuth::VERSION
   s.authors     = ["Richard Taylor", "jugyo"]
   s.email       = ["moomerman@gmail.com", "jugyo.org@gmail.com"]
