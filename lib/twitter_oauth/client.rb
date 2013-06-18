@@ -76,21 +76,32 @@ module TwitterOAuth
         @access_token ||= OAuth::AccessToken.new(consumer, @token, @secret)
       end
 
+      # Prefix path with the API version and remove double-slashes
+      #
+      # Double-slashes can occur when the API version is the empty
+      # string, e.g. identi.ca.  Removing them is necessary because
+      # URI.parse explodes when input starts with double-slash and
+      # contains underscore, e.g. '//direct_messages.json?count=1'
+      #
+      def api_path(path)
+        "/#{@api_version}#{path}".sub(/\/+/, "/")
+      end
+
       def get(path, headers={})
         headers.merge!("User-Agent" => "twitter_oauth gem v#{TwitterOAuth::VERSION}")
-        oauth_response = access_token.get("/#{@api_version}#{path}", headers)
+        oauth_response = access_token.get(api_path(path), headers)
         parse(oauth_response.body)
       end
 
       def post(path, body='', headers={})
         headers.merge!("User-Agent" => "twitter_oauth gem v#{TwitterOAuth::VERSION}")
-        oauth_response = access_token.post("/#{@api_version}#{path}", body, headers)
+        oauth_response = access_token.post(api_path(path), body, headers)
         parse(oauth_response.body)
       end
 
       def delete(path, headers={})
         headers.merge!("User-Agent" => "twitter_oauth gem v#{TwitterOAuth::VERSION}")
-        oauth_response = access_token.delete("/#{@api_version}#{path}", headers)
+        oauth_response = access_token.delete(api_path(path), headers)
         parse(oauth_response.body)
       end
 
